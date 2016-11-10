@@ -57,7 +57,7 @@ def parse_star_parameters(line, star):
     star.y=line[:s+1]
     line=line[s+2:]
     s=line.find(' ')
-    star.Vx=line[:s+1]line=line[s+2:]
+    star.Vx=line[:s+1]
     s=line.find(' ')
     star.Vy=line[:s+1]
     """ Здесь (x, y) — координаты зведы, (Vx, Vy) — скорость.
@@ -85,7 +85,29 @@ def parse_planet_parameters(line, planet):
     **line** — строка с описание планеты.
     **planet** — объект планеты.
     """
-    pass  # FIXME: not done yet...
+    line=line[7:]
+    s=line.find(' ')
+    planet.R=line[:s+1]
+
+    line=line[s+2:]
+    s=line.find(' ')
+    planet.color=line[:s+1]
+
+    line=line[s+2:]
+    s=line.find(' ')
+    planet.m=line[:s+1]
+    line=line[s+2:]
+    s=line.find(' ')
+    planet.x=line[:s+1]
+    line=line[s+2:]
+    s=line.find(' ')
+    planet.y=line[:s+1]
+    line=line[s+2:]
+    s=line.find(' ')
+    planet.Vx=line[:s+1]
+    s=line.find(' ')
+    planet.Vy=line[:s+1]
+    pass
 
 
 def write_space_objects_data_to_file(output_filename, space_objects):
