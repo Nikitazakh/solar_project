@@ -24,7 +24,7 @@ def read_space_objects_data_from_file(input_filename):
                 parse_star_parameters(line, star)
                 objects.append(star)
             elif object_type == "planet":
-                planet = planet()
+                planet = Planet()
                 parse_planet_parameters(line, planet)
                 objects.append(planet)
             else:
@@ -40,26 +40,26 @@ def parse_star_parameters(line, star):
 
     line=line[5:]
     s=line.find(' ')
-    star.R=line[:s+1]
+    star.R=float(line[:s+1])
 
-    line=line[s+2:]
+    line=line[s+1:]
     s=line.find(' ')
-    star.color=line[:s+1]
+    star.color=line[:s]
 
-    line=line[s+2:]
+    line=line[s+1:]
     s=line.find(' ')
-    star.m=line[:s+1]
-    line=line[s+2:]
+    star.m=float(line[:s+1])
+    line=line[s+1:]
     s=line.find(' ')
-    star.x=line[:s+1]
-    line=line[s+2:]
+    star.x=float(line[:s+1])
+    line=line[s+1:]
     s=line.find(' ')
-    star.y=line[:s+1]
-    line=line[s+2:]
+    star.y=float(line[:s+1])
+    line=line[s+1:]
     s=line.find(' ')
-    star.Vx=line[:s+1]
+    star.Vx=float(line[:s+1])
     s=line.find(' ')
-    star.Vy=line[:s+1]
+    star.Vy=float(line[:s+1])
     """ Здесь (x, y) — координаты зведы, (Vx, Vy) — скорость.
     Пример строки:
     Star 10 red 1000 1 2 3 4
@@ -87,26 +87,26 @@ def parse_planet_parameters(line, planet):
     """
     line=line[7:]
     s=line.find(' ')
-    planet.R=line[:s+1]
+    planet.R=float(line[:s+1])
 
-    line=line[s+2:]
+    line=line[s+1:]
     s=line.find(' ')
-    planet.color=line[:s+1]
+    planet.color=line[:s]
 
-    line=line[s+2:]
+    line=line[s+1:]
     s=line.find(' ')
-    planet.m=line[:s+1]
-    line=line[s+2:]
+    planet.m=float(line[:s+1])
+    line=line[s+1:]
     s=line.find(' ')
-    planet.x=line[:s+1]
-    line=line[s+2:]
+    planet.x=float(line[:s+1])
+    line=line[s+1:]
     s=line.find(' ')
-    planet.y=line[:s+1]
-    line=line[s+2:]
+    planet.y=float(line[:s+1])
+    line=line[s+1:]
     s=line.find(' ')
-    planet.Vx=line[:s+1]
+    planet.Vx=float(line[:s+1])
     s=line.find(' ')
-    planet.Vy=line[:s+1]
+    planet.Vy=float(line[:s+1])
     pass
 
 
