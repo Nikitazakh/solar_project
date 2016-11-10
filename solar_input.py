@@ -10,7 +10,7 @@ def read_space_objects_data_from_file(input_filename):
 
     Параметры:
 
-    **input_filename** — имя входного файла
+    **input_filename** — имя входного файла имя входного файла
     """
 
     objects = []
@@ -19,10 +19,14 @@ def read_space_objects_data_from_file(input_filename):
             if len(line.strip()) == 0 or line[0] == '#':
                 continue  # пустые строки и строки-комментарии пропускаем
             object_type = line.split()[0].lower()
-            if object_type == "star":  # FIXME: do the same for planet
+            if object_type == "star":
                 star = Star()
                 parse_star_parameters(line, star)
                 objects.append(star)
+            elif object_type == "planet":
+                planet = planet()
+                parse_planet_parameters(line, planet)
+                objects.append(planet)
             else:
                 print("Unknown space object")
 
@@ -32,19 +36,39 @@ def read_space_objects_data_from_file(input_filename):
 def parse_star_parameters(line, star):
     """Считывает данные о звезде из строки.
     Входная строка должна иметь слеюущий формат:
-    Star <радиус в пикселах> <цвет> <масса> <x> <y> <Vx> <Vy>
+    Star <радиус в пикселах> <цвет> <масса> <x> <y> <Vx> <Vy>"""
 
-    Здесь (x, y) — координаты зведы, (Vx, Vy) — скорость.
+    line=line[5:]
+    s=line.find(' ')
+    star.R=line[:s+1]
+
+    line=line[s+2:]
+    s=line.find(' ')
+    star.color=line[:s+1]
+
+    line=line[s+2:]
+    s=line.find(' ')
+    star.m=line[:s+1]
+    line=line[s+2:]
+    s=line.find(' ')
+    star.x=line[:s+1]
+    line=line[s+2:]
+    s=line.find(' ')
+    star.y=line[:s+1]
+    line=line[s+2:]
+    s=line.find(' ')
+    star.Vx=line[:s+1]line=line[s+2:]
+    s=line.find(' ')
+    star.Vy=line[:s+1]
+    """ Здесь (x, y) — координаты зведы, (Vx, Vy) — скорость.
     Пример строки:
     Star 10 red 1000 1 2 3 4
 
     Параметры:
 
     **line** — строка с описание звезды.
-    **star** — объект звезды.
-    """
-
-    pass  # FIXME: not done yet
+    **star** — объект звезды."""
+    pass
 
 def parse_planet_parameters(line, planet):
     """Считывает данные о планете из строки.
