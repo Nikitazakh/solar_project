@@ -37,15 +37,20 @@ def parse_star_parameters(line, star):
     """Считывает данные о звезде из строки.
     Входная строка должна иметь слеюущий формат:
     Star <радиус в пикселах> <цвет> <масса> <x> <y> <Vx> <Vy>"""
-
-    line=line[5:]
+    parameters = line.split()
+    star.R = float(parameters[1])
+    star.color = parameters[2]
+    star.m = float(parameters[3])
+    star.x = float(parameters[4])
+    star.y = float(parameters[5])
+    star.Vx = float(parameters[6])
+    star.Vy = float(parameters[7])
+    '''line=line[5:]
     s=line.find(' ')
     star.R=float(line[:s+1])
-
     line=line[s+1:]
     s=line.find(' ')
     star.color=line[:s]
-
     line=line[s+1:]
     s=line.find(' ')
     star.m=float(line[:s+1])
@@ -59,7 +64,7 @@ def parse_star_parameters(line, star):
     s=line.find(' ')
     star.Vx=float(line[:s+1])
     s=line.find(' ')
-    star.Vy=float(line[:s+1])
+    star.Vy=float(line[:s+1])'''
     """ Здесь (x, y) — координаты зведы, (Vx, Vy) — скорость.
     Пример строки:
     Star 10 red 1000 1 2 3 4
@@ -85,14 +90,20 @@ def parse_planet_parameters(line, planet):
     **line** — строка с описание планеты.
     **planet** — объект планеты.
     """
-    line=line[7:]
+    parameters = line.split()
+    planet.R = float(parameters[1])
+    planet.color = parameters[2]
+    planet.m = float(parameters[3])
+    planet.x = float(parameters[4])
+    planet.y = float(parameters[5])
+    planet.Vx = float(parameters[6])
+    planet.Vy = float(parameters[7])
+    '''line=line[7:]
     s=line.find(' ')
     planet.R=float(line[:s+1])
-
     line=line[s+1:]
     s=line.find(' ')
     planet.color=line[:s]
-
     line=line[s+1:]
     s=line.find(' ')
     planet.m=float(line[:s+1])
@@ -107,7 +118,7 @@ def parse_planet_parameters(line, planet):
     planet.Vx=float(line[:s+1])
     s=line.find(' ')
     planet.Vy=float(line[:s+1])
-    pass
+    pass'''
 
 
 def write_space_objects_data_to_file(output_filename, space_objects):
